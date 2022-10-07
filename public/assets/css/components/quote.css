@@ -1,0 +1,16 @@
+#quote {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#quote > p {
+  font-family: 'Times New Roman', Times, serif;
+  color: #a20000;
+}
+
+#quote > p > span {
+  font-size: x-large;
+  font-family: Arial, Helvetica, sans-serif;
+}
