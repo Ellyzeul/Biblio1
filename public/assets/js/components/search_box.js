@@ -24,7 +24,7 @@ _pageState.filterOptions.forEach(option => option.addEventListener('click', () =
   _pageState.selectedFilter.value = _pageState.filterOptionsMap[option.textContent]
 }))
 
-_pageState.searchButton.addEventListener('click', () => {
+_pageState.searchEvent = () => {
   const searchTerm = _pageState.searchInput.value
   if(!searchTerm) return
   const filter = _pageState.selectedFilter.value
@@ -32,4 +32,10 @@ _pageState.searchButton.addEventListener('click', () => {
   const anchor = document.createElement('a')
   anchor.href = `/resultado?${filter}=${searchTerm}`
   anchor.click()
-})
+}
+
+_pageState.searchButton.addEventListener('click', _pageState.searchEvent)
+_pageState.searchInput.addEventListener('keydown', (event) => event.key === "Enter"
+  ? _pageState.searchEvent()
+  : null
+)
