@@ -8,7 +8,8 @@ use App\Models\Quote;
 
 class QuoteController extends Controller
 {
-	public static function read() {
+	public static function read()
+	{
 		$quote = new Quote();
 		$result = $quote->read();
 

@@ -10,7 +10,8 @@ class Quote extends Model
 {
 	use HasFactory;
 
-	public function read() {
+	public function read()
+	{
 		$result = DB::table("quotes")
 			->select("quote", "author")
 			->get()
