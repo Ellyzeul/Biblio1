@@ -1,5 +1,5 @@
 <section id="search-box">
-	<input id="search-filter" type="text">
+	<input id="search-filter" type="text" value="isbn">
 	<div id="filter-options">
 		<div class="filter-option-selected">ISBN</div>
 		<div class="filter-option">TÍTULO</div>
