@@ -9,15 +9,17 @@ use \stdClass;
 class ResultByIsbn extends Component
 {
 	public stdClass $book;
+	public array $links;
 
 	/**
 	 * Create a new component instance.
 	 *
 	 * @return void
 	 */
-	public function __construct(stdClass $book)
+	public function __construct(stdClass $book, array $links)
 	{
 		$this->book = $book;
+		$this->links = $links;
 	}
 
     /**
@@ -35,6 +37,7 @@ class ResultByIsbn extends Component
 				"publisher" => $this->book->publisher,
 				"thumbnail" => $this->book->thumbnail,
 				"description" => $this->book->description,
+				"links" => $this->links,
 			]);
     }
 }

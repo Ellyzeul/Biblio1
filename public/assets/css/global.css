@@ -4,3 +4,7 @@ body {
   width: 100vw;
   height: 100vh;
 }
+
+div > div > div:last-child > table {
+  display: none;
+}

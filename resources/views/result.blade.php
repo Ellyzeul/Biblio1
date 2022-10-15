@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-20712069-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-20712069-1');
+  </script>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,8 +36,8 @@
         </header>
         @if($is_list)
           <x-result-list :books="$books" />
-        @elseif(count($books) > 0)
-          <x-result-by-isbn :book="$books[0]" />
+          @elseif(count($books) > 0)
+          <x-result-by-isbn :book="$books[0]" :links="$links" />
         @else
           <div>Nenhum resultado para a pesquisa foi encontrado.</div>
         @endif

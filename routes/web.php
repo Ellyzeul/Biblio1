@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\CotationController;
 use App\Http\Controllers\QuoteController;
 
 /*
@@ -28,11 +29,14 @@ Route::get('/', function () {
 Route::get('/resultado', function (Request $request) {
 	[$quote, $quoteAuthor] = QuoteController::read();
 	[$isList, $books] = BookController::search($request);
+	$isbn = BookController::getISBN($request);
+	$links = CotationController::read($isbn);
 
 	return view('result', [
 		"quote" => $quote,
 		"quote_author" => $quoteAuthor,
 		"is_list" => $isList,
-		"books" => $books
+		"books" => $books,
+		"links" => $links,
 	]);
 });

@@ -38,4 +38,16 @@ class Book extends Model
 			$books
 		];
 	}
+
+	public function getISBN(string $key, string $value)
+	{
+		if($key == 'isbn') return $value;
+
+		$isbn = DB::table('books')
+			->select('isbn13')
+			->where($key, '=', $value)
+			->get();
+		
+		return $isbn[0]->isbn13;
+	}
 }

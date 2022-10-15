@@ -37,4 +37,23 @@ class BookController extends Controller
 
 		return $result;
 	}
+
+	public static function getISBN(Request $request)
+	{
+		$book = new Book();
+
+		$by = null;
+		foreach(BookController::$searchFilters as $acceptableFilter) {
+			if($request->has($acceptableFilter)) {
+				$by = $acceptableFilter;
+				break;
+			}
+		}
+
+		$term = $request->input($by);
+
+		$result = $book->getISBN($by, $term);
+
+		return $result;
+	}
 }
