@@ -37,6 +37,7 @@ class Cotation extends Model
 
 		$general = null;
 		$links = [];
+		$pushed = [];
 		foreach($results as $result) {
 			$toAppend = [
 				"price" => $result->price,
@@ -59,10 +60,11 @@ class Cotation extends Model
 			if($result->price == "0.00") continue;
 
 			array_push($links, $toAppend);
+			$pushed[$result->id_sellercentral] = true;
 		}
 		
 		return count($links) > 0
-			? $links
+			? isset($pushed["AMAZON"]) ? $links : array_merge($links, [$general])
 			: [$general];
 	}
 
