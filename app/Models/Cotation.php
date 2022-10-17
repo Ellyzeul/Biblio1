@@ -16,8 +16,10 @@ class Cotation extends Model
 		"A3MHMSHG2GA0MT",
 	];
 
-	public function read(string $isbn)
+	public function read(string | null $isbn)
 	{
+		if($isbn == null) return [];
+
 		$results = DB::table('cotations')
 			->join('companies', 'cotations.id_company', '=', 'companies.id')
 			->join('sellercentrals', 'cotations.id_sellercentral', '=', 'sellercentrals.id')

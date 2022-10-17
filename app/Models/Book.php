@@ -41,13 +41,14 @@ class Book extends Model
 
 	public function getISBN(string $key, string $value)
 	{
-		if($key == 'isbn') return $value;
+		if($key == 'isbn' && strlen($value) > 10) return $value;
 
+		$key = $key == 'isbn' ? 'isbn10' : $key;
 		$isbn = DB::table('books')
 			->select('isbn13')
 			->where($key, '=', $value)
 			->get();
 		
-		return $isbn[0]->isbn13;
+		return isset($isbn[0]) ? $isbn[0]->isbn13 : null;
 	}
 }

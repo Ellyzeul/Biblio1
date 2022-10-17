@@ -8,7 +8,7 @@ use App\Models\Cotation;
 
 class CotationController extends Controller
 {
-	public static function read(string $isbn)
+	public static function read(string | null $isbn)
 	{
 		$cotation = new Cotation();
 

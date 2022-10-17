@@ -4,10 +4,10 @@
 	</div>
 	<section id="book-description">
 		<p><span>Título:</span> {{ $title }}</p>
-		<p><span>ISBN-13:</span> {{ $isbn13 }}</p>
-		@if(isset($isbn10))<p><span>ISBN-10:</span> {{ $isbn10 }}</p>@endif
 		@if(isset($author))<p><span>Autor:</span> {{ $author }}</p>@endif
 		@if(isset($publishser))<p><span>Editora:</span> {{ $publishser }}</p>@endif
+		@if(isset($isbn10))<p><span>ISBN-10:</span> {{ $isbn10 }}</p>@endif
+		<p><span>ISBN-13:</span> {{ $isbn13 }}</p>
 		@if(isset($description))<p><span>Sinopse:</span> {{ $description }}</p>@endif
 	</section>
 	<section id="cotation">

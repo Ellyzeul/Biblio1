@@ -104,7 +104,7 @@
   width: 100%;
   height: var(--row-height);
   display: grid;
-  grid-template-columns: var(--row-height) auto auto;
+  grid-template-columns: var(--row-height) 60% auto;
   place-items: center;
   margin-top: 10px;
   text-decoration: none;
@@ -112,7 +112,7 @@
   border-radius: 5px;
 }
 .cotation-row > img {
-  height: 95%;
+  height: 64px;
 }
 .cotation-row > div {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
