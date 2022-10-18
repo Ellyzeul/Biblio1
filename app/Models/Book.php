@@ -10,6 +10,8 @@ class Book extends Model
 {
 	use HasFactory;
 
+	private string $defaultPageTitle = "Biblio1 - Seu novo catalogo de livros online - Busque títulos e compare preços";
+
 	/** Realiza a busca pelo termo na categoria selecionada
 	 * 
 	 * @param string $term
@@ -26,7 +28,7 @@ class Book extends Model
 			->limit(50)
 			->get();
 		
-		$isList = count($results) > 1;
+		$total = count($results);
 		$books = [];
 
 		foreach($results as $result) {
@@ -34,8 +36,9 @@ class Book extends Model
 		}
 
 		return [
-			$isList, 
-			$books
+			$total, 
+			$books,
+			$pageTitle = $this->getPageTitle($books, $total)
 		];
 	}
 
@@ -50,5 +53,17 @@ class Book extends Model
 			->get();
 		
 		return isset($isbn[0]) ? $isbn[0]->isbn13 : null;
+	}
+
+	private function getPageTitle(array $books, int $totalBooks)
+	{
+		if($totalBooks == 0) return $this->defaultPageTitle;
+		if($totalBooks == 1) return $books[0]->title;
+
+		if(isset($_GET['title'])) return "Livro: " . $_GET['title'];
+		if(isset($_GET['author'])) return "Autor: " . $_GET['author'];
+		if(isset($_GET['publisher'])) return "Editora: " . $_GET['publisher'];
+
+		return $this->defaultPageTitle;
 	}
 }

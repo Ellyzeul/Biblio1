@@ -19,7 +19,7 @@
 	<link rel="stylesheet" href="{{ asset('/assets/css/components/search_box.css') }}">
 	<link rel="stylesheet" href="{{ asset('/assets/css/components/quote.css') }}">
 	<link rel="stylesheet" href="{{ asset('/assets/css/components/result_list.css') }}">
-  <title>Biblio1 - Seu novo catalogo de livros online - Busque títulos e compare preços</title>
+  <title>{{ $page_title }}</title>
   <script src="{{ asset('/assets/js/components/search_box.js') }}" defer></script>
 </head>
 <body>
@@ -34,9 +34,9 @@
           <x-quote :quote="$quote" :quote-author="$quote_author" />
           <hr>
         </header>
-        @if($is_list)
+        @if($total > 1)
           <x-result-list :books="$books" />
-          @elseif(count($books) > 0)
+        @elseif(count($books) == 1)
           <x-result-by-isbn :book="$books[0]" :links="$links" />
         @else
           <div>Nenhum resultado para a pesquisa foi encontrado.</div>
