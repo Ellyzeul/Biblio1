@@ -64,7 +64,7 @@ class Cotation extends Model
 		}
 		
 		return count($links) > 0
-			? isset($pushed["AMAZON"]) ? $links : array_merge($links, [$general])
+			? isset($pushed["AMAZON"]) || !isset($general) ? $links : array_merge($links, [$general])
 			: [$general];
 	}
 
