@@ -12,16 +12,20 @@
 	</section>
 	<section id="cotation">
 		<h2>Cotações para o livro</h2>
-		@foreach($links as $link)
-			<x-cotation-row 
-				:price="$link['price']" 
-				:id-sellercentral="$link['id_sellercentral']" 
-				:sellercentral="$link['sellercentral']" 
-				:company="$link['company']" 
-				:id-company="$link['id_company']" 
-				:link="$link['link']" 
-			/>
-		@endforeach
+		@if(count($links) > 0)
+			@foreach($links as $link)
+				<x-cotation-row 
+					:price="$link['price']" 
+					:id-sellercentral="$link['id_sellercentral']" 
+					:sellercentral="$link['sellercentral']" 
+					:company="$link['company']" 
+					:id-company="$link['id_company']" 
+					:link="$link['link']" 
+				/>
+			@endforeach
+		@else
+			<p id="no-cotation">Sem cotações para esse livro.</p>
+		@endif
 	</section>
 	<div id="iframe-container">
 		<script type="text/javascript" src="https://books.google.com/books/previewlib.js"></script>

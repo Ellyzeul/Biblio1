@@ -64,8 +64,8 @@ class Cotation extends Model
 		}
 		
 		return count($links) > 0
-			? isset($pushed["AMAZON"]) || !isset($general) ? $links : array_merge($links, [$general])
-			: [$general];
+			? (isset($pushed["AMAZON"]) || $general == null ? $links : array_merge($links, [$general]))
+			: ($general != null ?[$general] : []);
 	}
 
 	private function getLink(string $isbn, string $urlIdentifier, string $idSellercentral, int $idCompany)
