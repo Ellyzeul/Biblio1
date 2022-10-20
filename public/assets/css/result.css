@@ -6,16 +6,33 @@
 }
 
 #result-content {
+  --middle-container-width: calc(40% + 191px);
+  --lateral-width: calc((100% - var(--middle-container-width)) / 2);
   width: 100%;
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: grid;
+  grid-template-columns: var(--lateral-width) var(--middle-container-width) var(--lateral-width);
   overflow-y: auto;
 }
 
+#seline-banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#seline-banner > a {
+  width: 90%;
+  margin-top: 10px;
+  text-decoration: none;
+}
+
+#seline-banner > a > img {
+  width: 100%;
+}
+
 #middle-container {
-  width: calc(40% + 191px);
+  width: 100%;
   display: flex;
   flex-direction: column;
 }

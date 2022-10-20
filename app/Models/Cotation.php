@@ -18,7 +18,7 @@ class Cotation extends Model
 
 	public function read(string | null $isbn)
 	{
-		if($isbn == null) return [];
+		if($isbn == null) return [[], null];
 
 		$results = DB::table('cotations')
 			->join('companies', 'cotations.id_company', '=', 'companies.id')
@@ -36,6 +36,7 @@ class Cotation extends Model
 			->get();
 
 		$general = null;
+		$seline = null;
 		$links = [];
 		$pushed = [];
 		foreach($results as $result) {
@@ -57,15 +58,25 @@ class Cotation extends Model
 				$general = $toAppend;
 				continue;
 			}
-			if($result->price == "0.00") continue;
+			if($result->price == "0.00" && $result->id_sellercentral != "SELINE") continue;
+			if($result->id_sellercentral == "SELINE") {
+				$seline = "https://www.livrariaseline.com.br/produtos/" . $result->url_identifier;
+			}
 
 			array_push($links, $toAppend);
 			$pushed[$result->id_sellercentral] = true;
 		}
-		
-		return count($links) > 0
+
+		$response = [
+			count($links) > 0
 			? (isset($pushed["AMAZON"]) || $general == null ? $links : array_merge($links, [$general]))
-			: ($general != null ?[$general] : []);
+			: ($general != null ? [$general] : []),
+			$seline != null
+			? $seline
+			: "https://www.livrariaseline.com.br"
+		];
+		
+		return $response;
 	}
 
 	private function getLink(string $isbn, string $urlIdentifier, string $idSellercentral, int $idCompany)

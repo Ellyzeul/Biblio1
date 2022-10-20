@@ -66,4 +66,9 @@ class Book extends Model
 
 		return $this->defaultPageTitle;
 	}
+
+	private function getKeywords(array $books, int $totalBooks)
+	{
+
+	}
 }

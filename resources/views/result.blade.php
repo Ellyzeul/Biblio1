@@ -26,6 +26,13 @@
   <section id="result">
     <x-navbar />
     <div id="result-content">
+      <div id="seline-banner">
+        @if($total == 1)
+          <a href="{{ $seline_link }}">
+            <img src="/assets/img/seline-banner.jpeg" alt="">
+          </a>
+        @endif
+      </div>
       <div id="middle-container">
         <header id="result-topbar">
           <x-b1-logo />
@@ -36,7 +43,7 @@
         </header>
         @if($total > 1)
           <x-result-list :books="$books" />
-        @elseif(count($books) == 1)
+        @elseif($total == 1)
           <x-result-by-isbn :book="$books[0]" :links="$links" />
         @else
           <div>Nenhum resultado para a pesquisa foi encontrado.</div>
