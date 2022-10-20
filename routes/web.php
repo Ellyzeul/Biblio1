@@ -28,7 +28,7 @@ Route::get('/', function () {
 
 Route::get('/resultado', function (Request $request) {
 	[$quote, $quoteAuthor] = QuoteController::read();
-	[$total, $books, $pageTitle] = BookController::search($request);
+	[$total, $books, $pageTitle, $keywords] = BookController::search($request);
 	$isbn = BookController::getISBN($request);
 	[$links, $selineLink] = CotationController::read($isbn);
 
@@ -38,6 +38,7 @@ Route::get('/resultado', function (Request $request) {
 		"total" => $total,
 		"books" => $books,
 		"page_title" => $pageTitle,
+		"keywords" => $keywords,
 		"links" => $links,
 		"seline_link" => $selineLink
 	]);

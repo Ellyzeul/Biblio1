@@ -38,7 +38,8 @@ class Book extends Model
 		return [
 			$total, 
 			$books,
-			$pageTitle = $this->getPageTitle($books, $total)
+			$this->getPageTitle($books, $total),
+			$this->getKeywords($books, $total)
 		];
 	}
 
@@ -69,6 +70,26 @@ class Book extends Model
 
 	private function getKeywords(array $books, int $totalBooks)
 	{
+		if($totalBooks != 1) return $this->getKeywordsForList($books);
 
+		$book = $books[0];
+		$keywords = [];
+
+		array_push($keywords, "ISBN", $book->isbn13, $book->isbn10);
+		if(isset($book->title)) array_push($keywords, "Título", $book->title);
+		if(isset($book->author)) array_push($keywords, "Autor", $book->author);
+		if(isset($book->publisher)) array_push($keywords, "Editora", $book->publisher);
+
+		return $keywords;
+	}
+
+	private function getKeywordsForList(array $books)
+	{
+		if(isset($_GET['ISBN'])) return ["Livro", $_GET['isbn']];
+		if(isset($_GET['title'])) return ["Livro", $_GET['title']];
+		if(isset($_GET['author'])) return ["Autor", $_GET['author']];
+		if(isset($_GET['publisher'])) return ["Editora", $_GET['publisher']];
+
+		return [];
 	}
 }
