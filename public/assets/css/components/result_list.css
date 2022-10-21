@@ -84,6 +84,11 @@
   font-weight: bold;
 }
 
+#isbn-result > section > p > a {
+  text-decoration: none;
+  color: inherit;
+}
+
 #book-description {
   grid-area: book-description;
 }

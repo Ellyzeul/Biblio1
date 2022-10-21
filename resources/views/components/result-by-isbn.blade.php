@@ -5,7 +5,7 @@
 	<section id="book-description">
 		<p><span>Título:</span> {{ $title }}</p>
 		@if(isset($author))<p><span>Autor:</span> {{ $author }}</p>@endif
-		@if(isset($publisher))<p><span>Editora:</span> {{ $publisher }}</p>@endif
+		@if(isset($publisher))<p><span>Editora:</span> <a href="/resultado?publisher={{ $publisher }}">{{ $publisher }}</a></p>@endif
 		@if(isset($isbn10))<p><span>ISBN-10:</span> {{ $isbn10 }}</p>@endif
 		<p><span>ISBN-13:</span> {{ $isbn13 }}</p>
 		@if(isset($description))<p><span>Sinopse:</span> {{ $description }}</p>@endif
