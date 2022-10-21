@@ -65,3 +65,15 @@
 #search-button:hover {
   cursor: pointer;
 }
+
+#search-error-msg {
+  margin-top: 6px;
+  padding: 2px 6px;
+  font-family: Arial, Helvetica, sans-serif;
+  text-decoration: underline;
+  background-color: #a20000;
+  color: white;
+  border-radius: 3px;
+  visibility: hidden;
+  transition: 125ms;
+}

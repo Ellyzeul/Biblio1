@@ -10,4 +10,5 @@
 		<input type="text" name="" id="search-input">
 		<button id="search-button"><img src="/assets/img/search.gif" alt="Pesquisar"></button>
 	</div>
+	<span id="search-error-msg">O ISBN deve conter 10 ou 13 caracteres.</span>
 </section>
