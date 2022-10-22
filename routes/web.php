@@ -43,3 +43,12 @@ Route::get('/resultado', function (Request $request) {
 		"seline_link" => $selineLink
 	]);
 });
+
+Route::get('/sobre.php', function() {
+	return redirect('/');
+});
+
+Route::get('/{file}', function($file) {
+	return redirect('/' . str_replace('.php', '', $file) . '?' . $_SERVER['QUERY_STRING']);
+})
+	->where('file', '[A-Za-z0-9-]+\.php.*');
