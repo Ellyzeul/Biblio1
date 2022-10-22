@@ -49,6 +49,10 @@ Route::get('/sobre.php', function() {
 });
 
 Route::get('/{file}', function($file) {
-	return redirect('/' . str_replace('.php', '', $file) . '?' . $_SERVER['QUERY_STRING']);
+	return redirect('/' . str_replace('.php', '', $file) . (isset($_SERVER['QUERY_STRING']) 
+			? '?' . $_SERVER['QUERY_STRING'] 
+			: ""
+		)
+	);
 })
 	->where('file', '[A-Za-z0-9-]+\.php.*');
