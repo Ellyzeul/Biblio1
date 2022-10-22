@@ -50,7 +50,7 @@ Route::get('/sobre.php', function() {
 
 Route::get('/{file}', function($file) {
 	return redirect('/' . str_replace('.php', '', $file) . (isset($_SERVER['QUERY_STRING']) 
-			? '?' . $_SERVER['QUERY_STRING'] 
+			? '?' . strtolower($_SERVER['QUERY_STRING']) 
 			: ""
 		)
 	);
