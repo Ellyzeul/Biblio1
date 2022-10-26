@@ -19,7 +19,8 @@
 	<link rel="stylesheet" href="{{ asset('/assets/css/components/b1_logo.css') }}">
 	<link rel="stylesheet" href="{{ asset('/assets/css/components/search_box.css') }}">
 	<link rel="stylesheet" href="{{ asset('/assets/css/components/quote.css') }}">
-	<title>Biblio1 - Seu novo catalogo de livros online - Busque títulos e compare preços</title>
+	<title>Biblio1 - Busque títulos e compare preços</title>
+	<meta name="description" content="Seu novo catalogo de livros online. Busque títulos e compare preços.">
 	<script src="{{ asset('/assets/js/components/search_box.js') }}" defer></script>
 </head>
 <body>

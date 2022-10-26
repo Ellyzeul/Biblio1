@@ -10,7 +10,7 @@ class Book extends Model
 {
 	use HasFactory;
 
-	private string $defaultPageTitle = "Biblio1 - Seu novo catalogo de livros online - Busque títulos e compare preços";
+	private string $defaultPageTitle = "Biblio1 - Busque títulos e compare preços";
 
 	/** Realiza a busca pelo termo na categoria selecionada
 	 * 
