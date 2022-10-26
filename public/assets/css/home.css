@@ -17,6 +17,10 @@
   align-items: center;
 }
 
+h1 {
+  display: none;
+}
+
 #middle-container {
   width: 40%;
   margin-top: 45px;

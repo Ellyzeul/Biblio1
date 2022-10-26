@@ -32,6 +32,7 @@
     <x-navbar />
     <div id="result-content">
       <div id="seline-banner">
+        <h1>Resultados</h1>
         @if($total == 1)
           <a href="{{ $seline_link }}">
             <img src="/assets/img/seline-banner.jpeg" alt="">

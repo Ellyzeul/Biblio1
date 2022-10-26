@@ -27,6 +27,7 @@
 	<section id="home">
 		<x-navbar/>
 		<div id="home-content">
+			<h1>Biblio1</h1>
 			<x-b1-logo />
 			<div id="middle-container">
 				<x-search-box />
