@@ -20,7 +20,11 @@
 	<link rel="stylesheet" href="{{ asset('/assets/css/components/search_box.css') }}">
 	<link rel="stylesheet" href="{{ asset('/assets/css/components/quote.css') }}">
 	<link rel="stylesheet" href="{{ asset('/assets/css/components/result_list.css') }}">
-  <title>{{ $page_title }}</title>
+  <title>{{ 
+    strlen($page_title) < 70 
+    ? $page_title 
+    : (substr($page_title, 0, 66) . "...") 
+  }}</title>
   <script src="{{ asset('/assets/js/components/search_box.js') }}" defer></script>
 </head>
 <body>
