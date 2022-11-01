@@ -11,6 +11,7 @@ class Book extends Model
 	use HasFactory;
 
 	private string $defaultPageTitle = "Biblio1 - Busque títulos e compare preços";
+	private int $paginationOffset = 200;
 
 	/** Realiza a busca pelo termo na categoria selecionada
 	 * 
@@ -41,6 +42,25 @@ class Book extends Model
 			$this->getPageTitle($books, $total),
 			$this->getKeywords($books, $total)
 		];
+	}
+
+	public function getPage(int $page)
+	{
+		$offset = $page < 1 
+			? 0
+			: $page - 1;
+
+		$results = DB::table('books')
+			->where('id', '>', $this->paginationOffset * $offset)
+			->limit($this->paginationOffset)
+			->get();
+
+		$books = [];
+		foreach($results as $book) {
+			array_push($books, $book);
+		}
+		
+		return $books;
 	}
 
 	public function getISBN(string $key, string $value)

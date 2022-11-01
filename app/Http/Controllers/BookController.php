@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Book;
+use App\Models\URLFormatter;
 
 class BookController extends Controller
 {
@@ -36,6 +37,17 @@ class BookController extends Controller
 		$result = $book->search($term, $by);
 
 		return $result;
+	}
+
+	public static function getPage(string $pagination_code)
+	{
+		$book = new Book();
+		$urlFormatter = new URLFormatter();
+		$page = $urlFormatter->decryptPaginationCode($pagination_code);
+
+		$response = $book->getPage($page);
+
+		return $response;
 	}
 
 	public static function getISBN(Request $request)

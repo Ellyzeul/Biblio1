@@ -44,6 +44,17 @@ Route::get('/resultado', function (Request $request) {
 	]);
 });
 
+Route::get('/catalogo/{pagination_code?}', function(string $pagination_code = "") {
+	[$quote, $quoteAuthor] = QuoteController::read();
+	$books = BookController::getPage($pagination_code);
+
+	return view('catalog', [
+		"quote" => $quote,
+		"quote_author" => $quoteAuthor,
+		"books" => $books
+	]);
+});
+
 Route::get('/sobre.php', function() {
 	return redirect('/');
 });
