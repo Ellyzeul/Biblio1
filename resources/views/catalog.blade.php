@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="{{ asset('/assets/css/components/search_box.css') }}">
   <link rel="stylesheet" href="{{ asset('/assets/css/components/quote.css') }}">
   <link rel="stylesheet" href="{{ asset('/assets/css/components/catalog_list.css') }}">
-  <script src="{{ asset('/assets/js/search_box.js') }}" defer></script>
+	<script src="{{ asset('/assets/js/components/search_box.js') }}" defer></script>
 </head>
 <body>
   <div id="catalog">
