@@ -20,6 +20,7 @@ use App\Http\Controllers\QuoteController;
 
 Route::get('/', function () {
 	[$quote, $quoteAuthor] = QuoteController::read();
+
 	return view('home', [
 		"quote" => $quote,
 		"quote_author" => $quoteAuthor
