@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\SitemapURLController;
@@ -16,8 +17,12 @@ use App\Http\Controllers\SitemapURLController;
 |
 */
 
-Route::controller(SitemapURLController::class)
-    ->prefix('sitemaps')
-    ->group(function() {
-        Route::get('/create', 'create');
-    });
+Route::get('/sitemaps/create', function() {
+    set_time_limit(0);
+    Artisan::call('sitemap:generate');
+    set_time_limit(60);
+
+    return [
+        "message" => "Sitemaps gerados!!"
+    ];
+});

@@ -9,6 +9,9 @@ use App\Http\Controllers\SitemapURLController;
 
 class Kernel extends ConsoleKernel
 {
+	protected $commands = [
+		Commands\GenerateSitemaps::class
+	];
 	/**
 	 * Define the application's command schedule.
 	 *
