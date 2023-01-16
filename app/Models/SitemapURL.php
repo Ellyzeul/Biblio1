@@ -32,7 +32,7 @@ class SitemapURL extends Model
 					Url::create($url)
 						->setLastModificationDate(Carbon::now('America/Sao_Paulo'))
 						->setChangeFrequency('')
-						->setPriority(1.00)
+						->setPriority(1)
 				);
 			}
 			$sitemap->writeToFile(\public_path() . \DIRECTORY_SEPARATOR . $this->getSitemapName($i));

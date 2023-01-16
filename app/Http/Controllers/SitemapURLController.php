@@ -13,4 +13,13 @@ class SitemapURLController extends Controller
 
 		$sitemapURL->generateSitemaps();
 	}
+
+	public function create()
+	{
+		$this->__invoke();
+
+		return [
+			"message" => "Sitemaps gerados!!"
+		];
+	}
 }
