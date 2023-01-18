@@ -22,7 +22,7 @@ class Kernel extends ConsoleKernel
 	{
 		$schedule
 			->call(new SitemapURLController)
-			->everyMinute();
+			->weekly();
 	}
 
 	/**
