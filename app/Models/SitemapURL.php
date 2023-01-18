@@ -42,11 +42,11 @@ class SitemapURL extends Model
 		$index = SitemapIndex::create();
 		for($j = 1; $j <= $i; $j++) {
 			$index->add(
-				SitemapTag::create($this->domain . '/' . $this->getSitemapName($j))
+				SitemapTag::create($this->domain . '/public/' . $this->getSitemapName($j))
 					->setLastModificationDate(Carbon::now('America/Sao_Paulo'))
 			);
 		}
-		$index->writeToFile(\public_path() . \DIRECTORY_SEPARATOR . 'sitemapindex.xml');
+		$index->writeToFile(\public_path() . \DIRECTORY_SEPARATOR . 'sitemap_index.xml');
 	}
 
 	private function getSitemapName(int $num)
