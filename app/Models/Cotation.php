@@ -35,10 +35,8 @@ class Cotation extends Model
 			->where('isbn', '=', $isbn)
 			->get();
 
-		$general = null;
 		$seline = null;
 		$links = [];
-		$pushed = [];
 		foreach($results as $result) {
 			$toAppend = [
 				"price" => $result->price,
@@ -54,26 +52,19 @@ class Cotation extends Model
 				)
 			];
 
-			if($result->company == "general") {
-				$general = $toAppend;
-				continue;
-			}
+			if($result->company == "general") continue;
 			if($result->price == "0.00" && $result->id_sellercentral != "SELINE") continue;
+
 			if($result->id_sellercentral == "SELINE") {
 				$seline = "https://www.livrariaseline.com.br/produtos/" . $result->url_identifier;
 			}
 
 			array_push($links, $toAppend);
-			$pushed[$result->id_sellercentral] = true;
 		}
 
 		$response = [
-			count($links) > 0
-			? (isset($pushed["AMAZON"]) || $general == null ? $links : array_merge($links, [$general]))
-			: ($general != null ? [$general] : []),
-			$seline != null
-			? $seline
-			: "https://www.livrariaseline.com.br"
+			$links,
+			$seline ?? "https://www.livrariaseline.com.br"
 		];
 		
 		return $response;
