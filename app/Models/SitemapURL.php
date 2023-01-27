@@ -15,15 +15,15 @@ use Spatie\Sitemap\Tags\Url;
 class SitemapURL extends Model
 {
 	use HasFactory;
+
 	private string $domain = "https://biblio1.com.br";
 	private int $bookPaginationOffset = 20000;
 
 	public function generateSitemaps()
 	{
 		$total = $this->getTotalPages();
-		$i = 1;
 
-		for(;$i <= $total; $i++) {
+		for($i = 1; $i <= $total; $i++) {
 			$sitemap = Sitemap::create();
 			$urls = $this->getPageURLs($i-1);
 
@@ -38,9 +38,8 @@ class SitemapURL extends Model
 			$sitemap->writeToFile(\public_path() . \DIRECTORY_SEPARATOR . $this->getSitemapName($i));
 		}
 
-		$i=21;
 		$index = SitemapIndex::create();
-		for($j = 1; $j <= $i; $j++) {
+		for($j = 1; $j <= $total; $j++) {
 			$index->add(
 				SitemapTag::create($this->domain . '/public/' . $this->getSitemapName($j))
 					->setLastModificationDate(Carbon::now('America/Sao_Paulo'))
